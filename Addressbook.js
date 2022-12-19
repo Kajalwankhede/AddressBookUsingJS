@@ -152,11 +152,15 @@ let addressBookArray = new Array();
 try {
  addressBookArray.push( new AddressBook( "Kim","Ritch","Dubai","Dubai","AbuDhabi","365874",
  "91 9434435566","kim@gmail.com"));
+ 
+ console.log("----------------------------------------------------------------------------");
+ addressBookArray.push( new AddressBook( "Spectra","Denis","Chennai","Chennai","Karnataka","365874",
+ "91 7774435566","spectra@gmail.com"));
 
 } catch (e) {
  console.error(e);
 }
-console.log(addressBookArray.toString());
+console.log("Array :"+addressBookArray.toString());
 
 
 console.log("----------------------------------------------------------------------------");
@@ -211,3 +215,13 @@ function findContact(firstName, lastname) {// search for the person contact
   editContact(contact, "Kimmy", "firstName");
   console.log("Update person PersonDetails: "+contact);
  
+function findAndDeleteContact(firstName, lastname) {// Find the contact and delete from the address book
+    let contact = findContact(firstName, lastname);
+//    addressBookArray.splice(addressBookArray.indexOf(contact), 1);
+ addressBookArray.pop(contact);
+  }
+  
+  findAndDeleteContact("Spectra", "Denis");
+  console.log("----------------------------------------------------------------------------");
+  console.log("After Deleting Contact Remaining in Array :"+addressBookArray.toString());
+  
