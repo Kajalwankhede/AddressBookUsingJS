@@ -241,7 +241,7 @@ function addContact(contactToBeAdded) {
     else 
     addressBookArray.push(contact);
   }
-  let contactToBeAdded = new AddressBook("Kimmy","Thomas","Paris","NorthLondon", "London", "343422",
+  let contactToBeAdded = new AddressBook("Krist","Thomas","Paris","Paris", "USAA", "343422",
     "91 8787877890","jerry@gmail.com");
     let contactToBeAdded1 = new AddressBook("Nike","Jones","Paris","NorthLondon", "London", "343422",
     "91 9876543234","nike@gmail.com");
@@ -255,6 +255,28 @@ function addContact(contactToBeAdded) {
       addressBookArray.push(contactToBeAdded1); 
   
   console.log(" AddressBook: "+addressBookArray.toString());
-  
+console.log("----------------------------------------------------------");
 
+  function searchContactByCityOrState(choice, value) {
+    let addressBookFilter;
+    switch (choice) {
+      case "city":
+        addressBookFilter = addressBookArray.filter((contact) => contact.city == value);
+        break;
+      case "state":
+        addressBookFilter = addressBookArray.filter((contact) => contact.state == value);
+        break;
+    }
+    return addressBookFilter;
+  }
   
+  let contacts = searchContactByCityOrState("city","NorthLondon");
+  contacts.forEach((foundCityPerson) =>
+    console.log(foundCityPerson.firstName + " :  " + foundCityPerson.lastName)
+  );
+  
+  contacts = searchContactByCityOrState("state", "AbuDhabi");
+  contacts.forEach((foundCityPerson) =>
+    console.log(foundCityPerson.firstName + " : " + foundCityPerson.lastName)
+  );
+  console.log(" AddressBook: "+addressBookArray.toString());
