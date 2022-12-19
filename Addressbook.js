@@ -150,10 +150,64 @@ class AddressBook{
 // Created Address book array and added contacts to it 
 let addressBookArray = new Array();
 try {
- addressBookArray.push( "Kim","Ritch","Dubai","Dubai","AbuDhabi","365874",
- "91 9434435566","kim@gmail.com");
+ addressBookArray.push( new AddressBook( "Kim","Ritch","Dubai","Dubai","AbuDhabi","365874",
+ "91 9434435566","kim@gmail.com"));
 
 } catch (e) {
  console.error(e);
 }
-console.log("AddressBook Array: " +addressBookArray);
+console.log(addressBookArray.toString());
+
+
+console.log("----------------------------------------------------------------------------");
+function findContact(firstName, lastname) {// search for the person contact
+    let contactObj;
+    addressBookArray.forEach((contact) => {
+      if (contact.firstName == firstName && contact.lastname == lastname) {
+        contactObj = contact;
+      }
+    });
+    return contactObj;
+  }
+  
+  function editContact(contactObj, newData, choice) {
+    try {
+      switch (choice) {
+        case "firstName":
+          contact.firstName = newData;
+          break;
+        case "lastname":
+          contactObj.lastname = newData;
+          break;
+        case "address":
+          contact.address = newData;
+          break;
+        case "city":
+          contact.city = newData;
+          break;
+        case "state":
+          contact.state = newData;
+          break;
+        case "zip":
+          contact.zip = newData;
+          break;
+        case "phoneNumber":
+          contact.phoneNumber = newData;
+          break;
+        case "email":
+          contact.email = newData;
+          break;
+        default:
+          break;
+      }
+    } catch (e) {
+      console.error("Failed to edit Contact");
+    }
+  }
+  
+  let contact = findContact("Kim", "Ritch");
+  console.log("Find person PersonDetails: "+contact);// finding person
+  console.log("----------------------------------------------------------------------------");
+  editContact(contact, "Kimmy", "firstName");
+  console.log("Update person PersonDetails: "+contact);
+ 
