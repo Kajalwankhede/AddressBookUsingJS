@@ -217,11 +217,15 @@ function findContact(firstName, lastname) {// search for the person contact
  
 function findAndDeleteContact(firstName, lastname) {// Find the contact and delete from the address book
     let contact = findContact(firstName, lastname);
-//    addressBookArray.splice(addressBookArray.indexOf(contact), 1);
- addressBookArray.pop(contact);
+     addressBookArray.pop(contact);
   }
   
   findAndDeleteContact("Spectra", "Denis");
   console.log("----------------------------------------------------------------------------");
-  console.log("After Deleting Contact Remaining in Array :"+addressBookArray.toString());
+  console.log("After Deleting Contact Remaining in Array : "+addressBookArray.toString());
   
+
+  function getCount(){
+  let countContact=addressBookArray.reduce((count) => count+=1,0);
+  console.log("Count Contact:" +countContact);
+  }
