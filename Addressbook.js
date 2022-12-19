@@ -129,7 +129,7 @@ class AddressBook{
        
         toString() {
         return (
-        "First Name: " +this.firstName + "\nLast Name: " +this.lastname + " \nAddress: " +this.address +" \nCity: " +
+        "\nFirst Name: " +this.firstName + "\nLast Name: " +this.lastname + " \nAddress: " +this.address +" \nCity: " +
         this.city +"\nState: " +this.state +"\nZip: " + this.zip +"\nPhone number: " + this.phoneNumber +" \nEmail: " +
         this.email);
         }
@@ -224,8 +224,37 @@ function findAndDeleteContact(firstName, lastname) {// Find the contact and dele
   console.log("----------------------------------------------------------------------------");
   console.log("After Deleting Contact Remaining in Array : "+addressBookArray.toString());
   
-
-  function getCount(){
+  console.log("----------------------------------------------------------------------------");
   let countContact=addressBookArray.reduce((count) => count+=1,0);
-  console.log("Count Contact:" +countContact);
+  console.log("Getting Count Contact:" +countContact);
+  console.log("----------------------------------------------------------------------------");
+
+
+  //Add Contact to addressbook ensuring no duplicate contact exists
+function addContact(contactToBeAdded) {
+    if (
+      addressBookArray.find(
+        (contact) => contact.firstName == contactToBeAdded.firstName
+      )
+    )
+      console.log("Contact Already present");
+    else 
+    addressBookArray.push(contact);
   }
+  let contactToBeAdded = new AddressBook("Kimmy","Thomas","Paris","NorthLondon", "London", "343422",
+    "91 8787877890","jerry@gmail.com");
+    let contactToBeAdded1 = new AddressBook("Nike","Jones","Paris","NorthLondon", "London", "343422",
+    "91 9876543234","nike@gmail.com");
+  
+  let duplicateCheck = addressBookArray.find(element => element.firstName == contactToBeAdded.firstName);
+  if(duplicateCheck != null)
+      console.log("Duplicate element cannot be added");
+  else
+      addressBookArray.push(contactToBeAdded); 
+
+      addressBookArray.push(contactToBeAdded1); 
+  
+  console.log(" AddressBook: "+addressBookArray.toString());
+  
+
+  
