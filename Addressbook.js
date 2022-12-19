@@ -17,7 +17,14 @@ class AddressBook{
     }
    
     set firstName(firstName) {
-    this._firstName = firstName;
+        let firstNameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+        if (firstNameRegex.test(firstName)) {
+          this._firstName = firstName;
+        }
+    
+        else{
+            throw " First name should start with capital and at least 3 characters";
+        }
     }
    
     get lastname() {
@@ -25,7 +32,14 @@ class AddressBook{
     }
    
     set lastname(lastname) {
-    this._lastname = lastname;
+        let lastNameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+        if (lastNameRegex.test(lastname)) {
+          this._lastname = lastname;
+        }
+    
+        else{
+            throw " Last name should start with capital and at least 3 characters";
+        }
     }
    
     get address() {
@@ -33,7 +47,14 @@ class AddressBook{
     }
    
     set address(address) {
-    this._address = address;
+        let addressRegex = RegExp("^[a-zA-Z0-9]{4,}$");
+        if (addressRegex.test(address)) {
+          this._address = address;
+        }
+    
+        else{
+            throw " Address have at least 4 characters";
+        }
     }
    
     get city() {
@@ -41,7 +62,14 @@ class AddressBook{
     }
    
     set city(city) {
-    this._city = city;
+        let cityRegex = RegExp("^[a-zA-Z]{4,}$");
+        if (cityRegex.test(city)) {
+          this._city = city;
+        }
+    
+        else{
+            throw " city have at least 4 characters";
+        }
     }
    
     get state() {
@@ -49,7 +77,14 @@ class AddressBook{
     }
    
     set state(state) {
-    this._state = state;
+        let stateRegex = RegExp("^[a-zA-Z]{4,}$");
+        if (stateRegex.test(state)) {
+          this._state = state;
+        }
+    
+        else{
+            throw " State have at least 4 characters";
+        }
     }
    
     get zip() {
@@ -57,7 +92,12 @@ class AddressBook{
     }
    
     set zip(zip) {
-    this._zip = zip;
+        let zipRegex = RegExp("^[0-9]{3}\\s{0,1}[0-9]{3}$");
+        if (zipRegex.test(zip)) {
+          this._zip = zip;
+        } else {
+            throw "Zip should match the valid format";
+      }
     }
    
     get phone() {
@@ -65,16 +105,27 @@ class AddressBook{
     }
    
     set phone(phoneNumber) {
-    this._phoneNumber = phoneNumber;
-    }
-   
+            let phoneRegex = RegExp("^[0-9]{1} [0-9]{10}$");
+            if (phoneRegex.test(phoneNumber)) {
+            this._phoneNumber = phoneNumber;
+            } else{
+             throw "PhoneNumber should match the valid format";
+            }
+    
+        }
     get email() {
     return this._email;
     }
    
     set email(email) {
-    this._email = email;
-    }
+        let emailRegex = RegExp(
+            "^[a-zA-Z0-9]+[_+-.]?[a-zA-Z0-9]*[a-zA-Z0-9]@[a-zA-Z0-9]+([.][a-zA-Z]{2,4})([.][a-zA-Z]{2,4})?$");
+            if (emailRegex.test(email)) {
+            this._email = email;
+            } else{
+             throw "Email should match the valid format";
+            }
+        }
        
         toString() {
         return (
@@ -84,11 +135,11 @@ class AddressBook{
         }
        }
        
-       let addressbook = new AddressBook( "Kajal",  "Wankhede","Nagpur", "Nagpur","Maharashtra","440034",
-        "7218448782", "Kajalwankhede@gmail.com"
+       let addressbook = new AddressBook( "Jemy",  "Dcruz","Nagpur", "Nagpur","Maharashtra","440034",
+        "91 7218448782", "Kajalwankhede@gmail.com"
        );
-       let addressbook1= new AddressBook( "Honney",  "Disuza","Banglore", "Banglore","Karnataka","325460",
-       "9875463211", "HD@gmail.com"
+       let addressbook1= new AddressBook( "Herry",  "Ritch","Banglore", "Banglore","Karnataka","325460",
+       "91 9875463211", "HD@gmail.com"
       );
        
        console.log(addressbook.toString());
