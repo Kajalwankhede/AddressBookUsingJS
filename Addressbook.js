@@ -145,3 +145,15 @@ class AddressBook{
        console.log(addressbook.toString());
        console.log("----------------------------------------------------------------------------")
        console.log(addressbook1.toString());
+       console.log("----------------------------------------------------------------------------")
+
+// Created Address book array and added contacts to it 
+let addressBookArray = new Array();
+try {
+ addressBookArray.push( "Kim","Ritch","Dubai","Dubai","AbuDhabi","365874",
+ "91 9434435566","kim@gmail.com");
+
+} catch (e) {
+ console.error(e);
+}
+console.log("AddressBook Array: " +addressBookArray);
