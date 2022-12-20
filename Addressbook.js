@@ -246,7 +246,7 @@ function addContact(contactToBeAdded) {
     let contactToBeAdded1 = new AddressBook("Nike","Jones","Paris","NorthLondon", "London", "343422",
     "91 9876543234","nike@gmail.com");
   
-    let contactToBeAdded2= new AddressBook("Trusha","Bawane","Hydrabad","Hydrabad", "Maharashtra", "478520",
+    let contactToBeAdded2= new AddressBook("Trusha","Bawane","Hydrabad","Hydrabad", "Maharashtra", "475820",
     "91 8875694231","trusha@gmail.com");
   let duplicateCheck = addressBookArray.find(element => element.firstName == contactToBeAdded.firstName);
   if(duplicateCheck != null)
@@ -275,35 +275,48 @@ console.log("----------------------------------------------------------");
   
   let contacts = searchContactByCityOrState("city","NorthLondon");
   contacts.forEach((foundCityPerson) =>
-    console.log(foundCityPerson.firstName + " :  " + foundCityPerson.lastName)
+    console.log(foundCityPerson.firstName + " :  " + foundCityPerson.lastname)
   );
   
   contacts = searchContactByCityOrState("state", "AbuDhabi");
   contacts.forEach((foundCityPerson) =>
-    console.log(foundCityPerson.firstName + " : " + foundCityPerson.lastName)
+    console.log(foundCityPerson.firstName + " : " + foundCityPerson.lastname)
   );
   console.log(" AddressBook: "+addressBookArray.toString());
 console.log(" ***********************************************************************************");
 
-  function sortContactByCityOrState(choice, value) {
-    let addressBookFilter;
-    switch (choice) {
-      case "city":
-        addressBookFilter = addressBookArray.sort((contact) => contact.city == value);
+function sortContactByCityOrState(choice, value) {
+  let addressBookFilter;
+  switch (choice) {
+    case "city":
+      addressBookFilter = addressBookArray.sort((contact) => contact.city == value);
+      break;
+    case "state":
+      addressBookFilter = addressBookArray.sort((contact) => contact.state == value);
+      break;
+      case "zip":
+        addressBookFilter = addressBookArray.sort((contact) => contact.zip == value);
         break;
-      case "state":
-        addressBookFilter = addressBookArray.sort((contact) => contact.state == value);
-        break;
-    }
-    return addressBookFilter;
   }
-  
-  let contactPerson = sortContactByCityOrState("city","Hydrabad");
-  contactPerson.sort((foundCityPerson) =>
-    console.log(foundCityPerson.firstName + " :---  " + foundCityPerson.lastname)
-  );
-  
-  contactPerson = searchContactByCityOrState("state", " London");
-  contactPerson.sort((foundCityPerson) =>
-    console.log(foundCityPerson.firstName + " :: " + foundCityPerson.lastname)
-  );
+  return addressBookFilter;
+}
+
+let sortPerson = sortContactByCityOrState("city","NorthLondon");
+sortPerson.filter((foundCityPerson) =>
+  console.log(foundCityPerson.firstName + " :---  " + foundCityPerson.lastname)
+);
+
+sortPerson = sortContactByCityOrState("state", " Maharashtra");
+sortPerson.filter((foundCityPerson) =>
+  console.log(foundCityPerson.firstName + " :: " + foundCityPerson.lastname)
+);
+
+sortPerson = sortContactByCityOrState("zip", " 475820");
+sortPerson.filter((foundCityPerson) =>
+  console.log(foundCityPerson.firstName + " : " + foundCityPerson.lastname)
+);
+
+console.log(" ***********************************************************************************");
+
+let alphabaticallySorted=addressBookArray.sort()
+console.log("Alphabatically Sorted list: "+alphabaticallySorted);
