@@ -1,5 +1,5 @@
 class AddressBook{
-    constructor(firstName,lastname,address,city,state,zip,phoneNumber,email) {
+      constructor(firstName,lastname,address,city,state,zip,phoneNumber,email) {
         this.firstName =firstName;
         this.lastname = lastname;
         this.address = address;
@@ -246,6 +246,8 @@ function addContact(contactToBeAdded) {
     let contactToBeAdded1 = new AddressBook("Nike","Jones","Paris","NorthLondon", "London", "343422",
     "91 9876543234","nike@gmail.com");
   
+    let contactToBeAdded2= new AddressBook("Trusha","Bawane","Hydrabad","Hydrabad", "Maharashtra", "478520",
+    "91 8875694231","trusha@gmail.com");
   let duplicateCheck = addressBookArray.find(element => element.firstName == contactToBeAdded.firstName);
   if(duplicateCheck != null)
       console.log("Duplicate element cannot be added");
@@ -253,6 +255,7 @@ function addContact(contactToBeAdded) {
       addressBookArray.push(contactToBeAdded); 
 
       addressBookArray.push(contactToBeAdded1); 
+      addressBookArray.push(contactToBeAdded2); 
   
   console.log(" AddressBook: "+addressBookArray.toString());
 console.log("----------------------------------------------------------");
@@ -280,3 +283,27 @@ console.log("----------------------------------------------------------");
     console.log(foundCityPerson.firstName + " : " + foundCityPerson.lastName)
   );
   console.log(" AddressBook: "+addressBookArray.toString());
+console.log(" ***********************************************************************************");
+
+  function sortContactByCityOrState(choice, value) {
+    let addressBookFilter;
+    switch (choice) {
+      case "city":
+        addressBookFilter = addressBookArray.sort((contact) => contact.city == value);
+        break;
+      case "state":
+        addressBookFilter = addressBookArray.sort((contact) => contact.state == value);
+        break;
+    }
+    return addressBookFilter;
+  }
+  
+  let contactPerson = sortContactByCityOrState("city","Hydrabad");
+  contactPerson.sort((foundCityPerson) =>
+    console.log(foundCityPerson.firstName + " :---  " + foundCityPerson.lastname)
+  );
+  
+  contactPerson = searchContactByCityOrState("state", " London");
+  contactPerson.sort((foundCityPerson) =>
+    console.log(foundCityPerson.firstName + " :: " + foundCityPerson.lastname)
+  );
